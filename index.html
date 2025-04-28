@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Profile: 𝑴𝒐𝒔𝒌</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="importmap">
+    {
+        "imports": {
+            "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.2/index.js"
+        }
+    }
+    </script>
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="theme-switch">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+    </div>
+
+    <div class="container">
+        <div class="stars"></div>
+        <div class="background-animation" id="background-animation"></div>
+        
+        <header>
+            <div class="logo">
+                <div class="discord-logo">
+                    <i class="fab fa-discord"></i>
+                </div>
+                <div class="logo-text">Discord User Card</div>
+            </div>
+        </header>
+
+        <main class="card-container">
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="profile-banner" id="profile-banner"></div>
+                    <div class="profile-avatar">
+                        <img id="profile-avatar-img" alt="Avatar" src="">
+                    </div>
+                </div>
+                <div class="profile-info">
+                    <h2 id="global-name">Loading...</h2>
+                    <div class="username" id="username">Loading...</div>
+                    <div class="user-id" id="user-id">Loading...</div>
+                    <div class="badges" id="badges"></div>
+                    <div class="created-at" id="created-at">Loading...</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

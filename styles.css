@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #5865F2;
+    --secondary-color: #EB459E;
+    --accent-color: #57F287;
+    --text-color: #FFFFFF;
+    --background-dark: #36393F;
+    --background-darker: #2F3136;
+    --background-light: #FFFFFF;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --success-color: #57F287;
+    --danger-color: #ED4245;
+    --warning-color: #FEE75C;
+    --transition-speed: 0.3s;
+    --animation-timing: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+/* Light theme colors */
+.light-theme {
+    --primary-color: #5865F2;
+    --secondary-color: #EB459E;
+    --accent-color: #57F287;
+    --text-color: #2F3136;
+    --background-dark: #F2F3F5;
+    --background-darker: #EBEDEF;
+    --background-light: #FFFFFF;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--background-dark);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color var(--transition-speed) ease;
+}
+
+/* Custom Cursor */
+.cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    mix-blend-mode: difference;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    transition: transform 0.1s ease;
+}
+
+.cursor.grow {
+    transform: translate(-50%, -50%) scale(2.5);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Theme switch */
+.theme-switch {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    transition: transform 0.3s var(--animation-timing);
+}
+
+.theme-switch:hover {
+    transform: scale(1.1);
+}
+
+.theme-switch i {
+    font-size: 1.2rem;
+    color: white;
+}
+
+.theme-switch .fa-sun {
+    display: none;
+}
+
+.light-theme .theme-switch .fa-moon {
+    display: none;
+}
+
+.light-theme .theme-switch .fa-sun {
+    display: block;
+}
+
+/* Container */
+.container {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Background elements */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, var(--background-dark) 0%, var(--background-darker) 100%);
+    z-index: -2;
+}
+
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/* Header */
+header {
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.discord-logo {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 1.2rem;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Main card container */
+.card-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Profile Card */
+.profile-card {
+    background-color: var(--background-darker);
+    border-radius: 10px;
+    width: 350px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    transform: perspective(1000px) rotateY(0deg);
+    transition: all var(--transition-speed) var(--animation-timing);
+}
+
+.profile-card:hover {
+    transform: perspective(1000px) rotateY(5deg) translateY(-5px);
+    box-shadow: 0 15px 40px var(--shadow-color);
+}
+
+.profile-header {
+    position: relative;
+}
+
+.profile-banner {
+    height: 120px;
+    background-color: #393a41;
+}
+
+.profile-avatar {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    background-color: var(--background-darker);
+    position: absolute;
+    bottom: -46px;
+    left: 20px;
+    border: 6px solid var(--background-darker);
+    overflow: hidden;
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info {
+    padding: 60px 20px 20px;
+}
+
+.profile-info h2 {
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+}
+
+.username {
+    color: var(--text-color);
+    opacity: 0.7;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.user-id {
+    color: var(--text-color);
+    opacity: 0.5;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.badges {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(88, 101, 242, 0.1);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--primary-color);
+}
+
+.badge i {
+    margin-right: 5px;
+}
+
+.created-at {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Remove footer-related styles */
+footer,
+.footer-content,
+.footer-text {
+    display: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    header {
+        padding: 20px;
+    }
+    
+    .profile-card {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-card {
+        transform: none !important;
+    }
+    
+    .profile-info h2 {
+        font-size: 1.3rem;
+    }
+}
