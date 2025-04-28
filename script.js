@@ -1,6 +1,5 @@
 import { gsap } from 'gsap';
 
-// Fetch Discord User Data
 async function fetchDiscordUser() {
     try {
         const response = await fetch('https://discordlookup.mesalytic.moe/v1/user/765929697976516610');
@@ -12,20 +11,16 @@ async function fetchDiscordUser() {
     }
 }
 
-// Update UI with Discord data
 function updateUIWithDiscordData(data) {
     if (!data) return;
     
-    // Update avatar
     const avatarImg = document.getElementById('profile-avatar-img');
     avatarImg.src = data.avatar.link;
     
-    // Update username and user ID
     document.getElementById('global-name').textContent = data.global_name || data.username;
     document.getElementById('username').textContent = data.username;
     document.getElementById('user-id').textContent = `ID: ${data.id}`;
     
-    // Update created at date
     const createdDate = new Date(data.created_at);
     const formattedDate = createdDate.toLocaleDateString('en-US', {
         year: 'numeric',
@@ -34,7 +29,6 @@ function updateUIWithDiscordData(data) {
     });
     document.getElementById('created-at').textContent = `Account created: ${formattedDate}`;
     
-    // Update banner if available
     const profileBanner = document.getElementById('profile-banner');
     if (data.banner && data.banner.link) {
         profileBanner.style.backgroundImage = `url(${data.banner.link})`;
@@ -47,7 +41,6 @@ function updateUIWithDiscordData(data) {
         profileBanner.style.backgroundColor = hexColor;
     }
     
-    // Add badges
     const badgesContainer = document.getElementById('badges');
     badgesContainer.innerHTML = '';
     
@@ -70,7 +63,6 @@ function updateUIWithDiscordData(data) {
     document.title = `Discord Profile: ${data.global_name || data.username}`;
 }
 
-// Initialize background animation
 function initBackgroundAnimation() {
     const container = document.getElementById('background-animation');
     if (!container) return;
@@ -124,7 +116,6 @@ function initBackgroundAnimation() {
     });
 }
 
-// Custom Cursor
 function initCustomCursor() {
     const cursor = document.querySelector('.cursor');
     if (!cursor) return;
@@ -150,7 +141,6 @@ function initCustomCursor() {
     });
 }
 
-// Theme switch
 function initThemeSwitch() {
     const themeSwitch = document.querySelector('.theme-switch');
     if (!themeSwitch) return;
@@ -168,7 +158,6 @@ function initThemeSwitch() {
     });
 }
 
-// Profile card effect
 function initProfileCardEffect() {
     const profileCard = document.querySelector('.profile-card');
     if (!profileCard) return;
@@ -197,7 +186,6 @@ function initProfileCardEffect() {
     });
 }
 
-// Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', async () => {
     const userData = await fetchDiscordUser();
     updateUIWithDiscordData(userData);
